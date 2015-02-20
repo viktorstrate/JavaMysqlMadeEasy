@@ -2,27 +2,30 @@
 MySQL in Java made easy
 
 ## Example
+Connects to the database at the host "localhost" with the username "root" and no password.
 ```java
-// Connects with the database named "database",
-// at the host "localhost" with the username "root" and no password.
 Mysql testMysql = new Mysql("localhost", "root", "");
-
-// Gets the results of a simple MYSQL query
+```
+Gets the results from a basic SELECT query
+```java
 ResultSet result = testMysql.query("SELECT * FROM database.table");
-
-// Lists out all the usernames for the table
+```
+Lists out all the usernames for the table
+```java
 try {
     while(result.next())
         System.out.println(result.getString("username"));
 } catch (SQLException e) {
     e.printStackTrace();
 }
-
-// Inserts into table a username and a password
+```
+Inserts into the table a username and a password, with the username john and password 1234
+```java
 testMysql.query("INSERT INTO database.table (username, password) VALUES ('john', '1234')");
-
-// Updates the table
-testMysql.query("UPDATE database.table SET username='Bob' WHERE id = 1");
+```
+Updates the table, sets the username for row 1 to bob
+```java
+testMysql.query("UPDATE database.table SET username='bob' WHERE id = 1");
 ```
 #### The database structure for the example above
 <table>
