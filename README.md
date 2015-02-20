@@ -40,3 +40,5 @@ testMysql.query("UPDATE database.table SET username='bob' WHERE id = 1");
 1. Download the desired version from the **jar** folder, located in the root of the repository.
 2. Add the .jar to your buildpath, google that if you don't know how to do that.
 3. [here](https://github.com/viktorstrate/JavaMysqlMadeEasy/blob/master/src/test/java/Example.java) you can see an example file to help or test if it works.
+
+## See the wiki for more information
