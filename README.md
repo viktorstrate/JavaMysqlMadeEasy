@@ -1,5 +1,5 @@
 # JavaMysqlMadeEasy
-MySQL in Java made easy, inspired by the way **PHP** handles this topic.<br>
+MySQL in Java made easy, a java API inspired by the way **PHP** handles mysql.<br>
 You just need one .jar file, it includes the drivers needed to run MYSQL in java.
 
 ## How it works
