@@ -1,5 +1,6 @@
 # JavaMysqlMadeEasy
-MySQL in Java made easy
+MySQL in Java made easy, inspired by the way **PHP** handles this topic.<br>
+You just need one .jar file, it includes the drivers needed to run MYSQL in java.
 
 ## How it works
 Connects to the database at the host "localhost" with the username "root" and no password.
