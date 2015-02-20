@@ -9,8 +9,10 @@ public class Mysql {
     private String password;
     private String dbName;
 
-    private Connection connection;
-    private Statement statement;
+    public static boolean log = true;
+
+    private Connection connection = null;
+    private Statement statement = null;
 
     public Mysql(){
         try {
@@ -27,9 +29,9 @@ public class Mysql {
      * @param username the username of the mysql server.
      * @param password the password of the mysql server. Use an empty string for no password.
      */
-    public Mysql(String host, String username, String password, String databaseName){
+    public Mysql(String host, String username, String password){
         this();
-        this.connect(host, username, password, databaseName);
+        this.connect(host, username, password);
 
     }
 
@@ -39,17 +41,18 @@ public class Mysql {
      * @param username the username of the mysql server.
      * @param password the password of the mysql server. Use an empty string for no password.
      */
-    public void connect(String host, String username, String password, String databaseName){
+    public void connect(String host, String username, String password){
         this.host = host;
         this.username = username;
         this.password = password;
         try {
             // Setup the connection with the db
-            connection = DriverManager.getConnection("jdbc:mysql://"+host+"/"+databaseName+"?"
+            connection = DriverManager.getConnection("jdbc:mysql://"+host+"/?"
             + "user="+username+"&password="+password);
             // Statements allow to issue SQL queries to the database
             statement = connection.createStatement();
         } catch (SQLException e) {
+            System.out.println("Couldn't connect to the database.");
             e.printStackTrace();
         }
     }
@@ -60,13 +63,47 @@ public class Mysql {
      */
     public ResultSet query(String query){
 
+        if(connection==null || statement==null){
+            System.out.println("Couldn't execute query, is did the connection fail, or is it set");
+        }
+
         try {
-            return statement.executeQuery(query);
+            if(query.toLowerCase().contains("insert") || query.toLowerCase().contains("update")){
+                statement.executeUpdate(query);
+                if(log) System.out.println("Inserted / Updated values to database syccessfully");
+                return null;
+            } else {
+                ResultSet results = statement.executeQuery(query);
+                if(log) System.out.println("Selected values from database syccessfully");
+                return results;
+            }
         } catch (SQLException e) {
+            System.out.println("Couldn't execute query");
             e.printStackTrace();
         }
 
         return null;
     }
 
+    /**
+     * Frees up the ram, the mysql executions used.
+     * Call it when you're done, using the Mysql Database.
+     */
+    public void close(){
+        try{
+            if(connection!=null) connection.close();
+            if(statement!=null) statement.close();
+        } catch (SQLException e){
+            System.out.println("Couldn't close connection or statement");
+            e.printStackTrace();
+        }
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public Statement getStatement() {
+        return statement;
+    }
 }

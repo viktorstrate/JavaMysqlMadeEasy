@@ -8,10 +8,10 @@ public class Example {
     public static void main(String[] args) {
         // Connects with the database named "database",
         // at the host "localhost" with the username "root" and no password.
-        Mysql testMysql = new Mysql("localhost", "root", "", "database");
+        Mysql testMysql = new Mysql("localhost", "root", "");
 
         // Gets the results of a simple MYSQL query
-        ResultSet result = testMysql.query("SELECT * FROM table");
+        ResultSet result = testMysql.query("SELECT * FROM database.table");
 
         // Lists out all the usernames for the table
         try {
@@ -20,5 +20,11 @@ public class Example {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        // Inserts into table a username and a password
+        testMysql.query("INSERT INTO database.table (username, password) VALUES ('john', '1234')");
+
+        // Updates the table
+        testMysql.query("UPDATE database.table SET username='Bob' WHERE id = 1");
     }
 }
