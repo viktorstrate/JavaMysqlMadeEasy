@@ -6,11 +6,10 @@ import java.sql.SQLException;
  */
 public class Example {
     public static void main(String[] args) {
-        // Connects with the database named "database",
-        // at the host "localhost" with the username "root" and no password.
+        // Connects to the database at the host "localhost" with the username "root" and no password.
         Mysql testMysql = new Mysql("localhost", "root", "");
 
-        // Gets the results of a simple MYSQL query
+        // Gets the results from a basic SELECT query
         ResultSet result = testMysql.query("SELECT * FROM database.table");
 
         // Lists out all the usernames for the table
