@@ -1,3 +1,5 @@
+package dk.qpqp.mysqlMadeEasy;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

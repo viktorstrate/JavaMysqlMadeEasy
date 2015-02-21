@@ -1,3 +1,5 @@
+package dk.qpqp.mysqlMadeEasy;
+
 import java.sql.*;
 
 /**
@@ -87,7 +89,7 @@ public class Mysql {
 
     /**
      * Frees up the ram, the mysql executions used.
-     * Call it when you're done, using the Mysql Database.
+     * Call it when you're done, using the dk.qpqp.mysqlMadeEasy.Mysql Database.
      */
     public void close(){
         try{
