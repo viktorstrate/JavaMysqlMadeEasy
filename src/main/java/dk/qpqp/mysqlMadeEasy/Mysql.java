@@ -70,14 +70,24 @@ public class Mysql {
         }
 
         try {
-            if(query.toLowerCase().contains("insert") || query.toLowerCase().contains("update")){
-                statement.executeUpdate(query);
-                if(log) System.out.println("Inserted / Updated values to database syccessfully");
-                return null;
-            } else {
+            if(query.toLowerCase().startsWith("select")){
                 ResultSet results = statement.executeQuery(query);
                 if(log) System.out.println("Selected values from database syccessfully");
                 return results;
+            } else {
+                statement.executeUpdate(query);
+                if(log){
+                    if(query.toLowerCase().startsWith("delete")) {
+                        System.out.println("Deleted values from database syccessfully");
+                    } else if(query.toLowerCase().startsWith("update")){
+                        System.out.println("Updated values to database syccessfully");
+                    } else if(query.toLowerCase().startsWith("insert")){
+                        System.out.println("Inserted values to database syccessfully");
+                    } else {
+                        System.out.println("Query execution syccessfully");
+                    }
+                }
+                return null;
             }
         } catch (SQLException e) {
             System.out.println("Couldn't execute query");

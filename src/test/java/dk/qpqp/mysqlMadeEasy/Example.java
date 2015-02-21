@@ -27,5 +27,8 @@ public class Example {
 
         // Updates the table
         testMysql.query("UPDATE database.table SET username='Bob' WHERE id = 1");
+
+        // Delete the table
+        testMysql.query("DELETE from database.table WHERE id = 2");
     }
 }
