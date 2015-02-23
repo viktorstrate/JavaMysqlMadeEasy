@@ -39,7 +39,7 @@ testMysql.query("UPDATE database.table SET username='bob' WHERE id = 1");
 
 ## How to setup
 1. Download the .jar from [here](https://github.com/viktorstrate/JavaMysqlMadeEasy/releases/latest).
-2. Add the .jar to your buildpath, google that if you don't know how to do that.
+2. Add the .jar to your buildpath, see the wiki on how to do that.
 3. [here](https://github.com/viktorstrate/JavaMysqlMadeEasy/blob/master/src/test/java/Example.java) you can see an example file to help or test if it works.
 
 ## See the [wiki](https://github.com/viktorstrate/JavaMysqlMadeEasy/wiki) for more information.
