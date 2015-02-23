@@ -1,6 +1,7 @@
 # JavaMysqlMadeEasy
 MySQL in Java made easy, a java API inspired by the way **PHP** handles mysql.<br>
-You just need one .jar file, it includes the drivers needed to run MYSQL in java.
+You just need one .jar file, it includes the drivers needed to run MYSQL in java.<br>
+[Download latest version](https://github.com/viktorstrate/JavaMysqlMadeEasy/releases/latest)
 
 ## How it works
 Connects to the database at the host "localhost" with the username "root" and no password.
@@ -37,8 +38,8 @@ testMysql.query("UPDATE database.table SET username='bob' WHERE id = 1");
 </table>
 
 ## How to setup
-1. Download the .jar from [here](https://github.com/viktorstrate/JavaMysqlMadeEasy/releases).
+1. Download the .jar from [here](https://github.com/viktorstrate/JavaMysqlMadeEasy/releases/latest).
 2. Add the .jar to your buildpath, google that if you don't know how to do that.
 3. [here](https://github.com/viktorstrate/JavaMysqlMadeEasy/blob/master/src/test/java/Example.java) you can see an example file to help or test if it works.
 
-## See the wiki for more information
+## See the [wiki](https://github.com/viktorstrate/JavaMysqlMadeEasy/wiki) for more information.
