@@ -4,18 +4,27 @@ import java.sql.*;
 
 /**
  * Created by viktorstrate on 20/02/15.
+ * The main file, from here everything is created
  */
 public class Mysql {
-    private String host;
-    private String username;
-    private String password;
-    private String dbName;
+    /**
+     * The host of the database fx. "google.com"
+     */
+    public String host;
+    public String username;
+    public String password;
 
+    /**
+     * If it should show log messages to the console or not
+     */
     public static boolean log = true;
 
     private Connection connection = null;
     private Statement statement = null;
 
+    /**
+     * Initializes a new Mysql database, but doesn't configure or connect
+     */
     public Mysql(){
         try {
             // This loads the driver
@@ -26,7 +35,7 @@ public class Mysql {
     }
 
     /**
-     * Connection information
+     * Initializes, configures and connects to a new Mysql database
      * @param host the hostname of the mysql server, fx. "localhost" or "example.com"
      * @param username the username of the mysql server.
      * @param password the password of the mysql server. Use an empty string for no password.
@@ -38,7 +47,7 @@ public class Mysql {
     }
 
     /**
-     * If not connected when initialized.
+     * Connects / reconnects to a database, gets called automatic in constructor if information is passed
      * @param host the hostname of the mysql server, fx. "localhost" or "example.com"
      * @param username the username of the mysql server.
      * @param password the password of the mysql server. Use an empty string for no password.
@@ -60,7 +69,8 @@ public class Mysql {
     }
     /**
      * Executes a query, to the mysql server
-     * @param query the query to execute fx. "SELECT * FROM table"
+     * @param query the query to execute fx. "SELECT * FROM database.table", where database is the name of the database,
+     *              and table is the name of the table
      * @return the selected rows, if any else returning NULL
      */
     public ResultSet query(String query){
@@ -98,8 +108,8 @@ public class Mysql {
     }
 
     /**
-     * Frees up the ram, the mysql executions used.
-     * Call it when you're done, using the dk.qpqp.mysqlMadeEasy.Mysql Database.
+     * Frees up the ram.
+     * Call it when you're done using the database.
      */
     public void close(){
         try{
